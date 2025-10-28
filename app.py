@@ -21,6 +21,17 @@ from PIL import Image, ExifTags
 st.set_page_config(page_title="Photo Map Gallery", layout="wide")
 st.title("🗺️ Photo Map Gallery")
 
+st.markdown("""
+<style>
+[data-testid="stImage"] img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 10px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 # --- FIX ORIENTATION FUNCTION ---
 def open_image_auto_oriented(path):
     img = Image.open(path)
@@ -99,15 +110,8 @@ with col_img:
             for p in loc["images"]:
                 if os.path.exists(p):
                     img = open_image_auto_oriented(p)
-                    st.markdown(
-                        f"""
-                        <div style='margin-bottom:15px;'>
-                            <img src='data:image/jpeg;base64,{st.image(img, use_container_width=True, output_format="JPEG")._image_data}'
-                                 style='width:100%; border-radius:10px;'>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+                    st.image(img, use_container_width=True, clamp=False)
+
         else:
             st.info("Click a location pin on the map to see its photo gallery.")
             
