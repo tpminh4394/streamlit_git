@@ -7,8 +7,6 @@ Created on Tue Oct 28 21:46:09 2025
 """
 
 import os
-os.chdir("//Users/tpminh/Desktop/streamlit")
-print("Working directory set to:", os.getcwd())
 
 
 import streamlit as st
@@ -16,6 +14,8 @@ from streamlit_folium import st_folium
 import folium
 import os
 from PIL import Image, ExifTags
+
+
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Photo Map Gallery", layout="wide")
