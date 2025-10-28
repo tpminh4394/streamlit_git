@@ -99,7 +99,6 @@ with col_img:
             for p in loc["images"]:
                 if os.path.exists(p):
                     img = open_image_auto_oriented(p)
-                    st.image(img, use_container_width=True)
                     st.markdown(
                         f"""
                         <div style='margin-bottom:15px;'>
