@@ -100,7 +100,16 @@ with col_img:
                 if os.path.exists(p):
                     img = open_image_auto_oriented(p)
                     st.image(img, use_container_width=True)
-                    st.markdown("<hr style='margin:10px 0; border:0.5px solid rgba(255,255,255,0.1);'/>", unsafe_allow_html=True)
+                    st.markdown(
+                        f"""
+                        <div style='margin-bottom:15px;'>
+                            <img src='data:image/jpeg;base64,{st.image(img, use_container_width=True, output_format="JPEG")._image_data}'
+                                 style='width:100%; border-radius:10px;'>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
         else:
             st.info("Click a location pin on the map to see its photo gallery.")
-
+            
+            
